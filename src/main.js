@@ -1,5 +1,7 @@
+// import SimpleLightbox from 'simplelightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
+
 import { getImagesByQuery } from './js/pixabay-api';
-// import { showLoader } from './js/render-functions';
 
 export const form = document.querySelector('.form');
 let query = null;
@@ -17,3 +19,10 @@ form.addEventListener('submit', event => {
   getImagesByQuery(query);
   form.reset();
 });
+
+// try {
+//   const gallery = document.querySelector('.gallery');
+//   gallery.addEventListener('click', event => {});
+// } catch (error) {
+//   return;
+// }

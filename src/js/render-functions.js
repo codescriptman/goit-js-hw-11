@@ -45,10 +45,10 @@ export function createGallery(images) {
       </a>
       <div class="card-txt">
 <ul class="card-txt-list">
-<li class="card-txt-item"><p class="card-txt">likes ${likes}</p></li>
-<li class="card-txt-item"><p class="card-txt">views ${views}</p></li>
-<li class="card-txt-item"><p class="card-txt">comments ${comments}</p></li>
-<li class="card-txt-item"><p class="card-txt">downloads ${downloads}</p></li>
+<li class="card-txt-item"><p class="card-txt">likes <br/>${likes}</p></li>
+<li class="card-txt-item"><p class="card-txt">views <br/>${views}</p></li>
+<li class="card-txt-item"><p class="card-txt">comments <br/>${comments}</p></li>
+<li class="card-txt-item"><p class="card-txt">downloads <br/>${downloads}</p></li>
 </ul>
       </div>
       </div>

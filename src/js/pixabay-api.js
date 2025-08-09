@@ -24,7 +24,6 @@ export function getImagesByQuery(query) {
     })
     .then(res => {
       if (res.data.hits.length === 0) {
-        clearGallery();
         throw new Error();
       }
       createGallery(res.data.hits);

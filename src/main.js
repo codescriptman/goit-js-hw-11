@@ -4,6 +4,7 @@
 import { getImagesByQuery } from './js/pixabay-api';
 import { showLoader } from './js/render-functions';
 import { hideLoader } from './js/render-functions';
+import { clearGallery } from './js/render-functions';
 
 export const form = document.querySelector('.form');
 let query = null;
@@ -14,6 +15,7 @@ form.addEventListener('input', e => {
 });
 
 form.addEventListener('submit', event => {
+  clearGallery();
   event.preventDefault();
   form.reset();
   if (query === '') {

@@ -2,6 +2,8 @@
 // import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { getImagesByQuery } from './js/pixabay-api';
+import { showLoader } from './js/render-functions';
+import { hideLoader } from './js/render-functions';
 
 export const form = document.querySelector('.form');
 let query = null;
@@ -13,11 +15,12 @@ form.addEventListener('input', e => {
 
 form.addEventListener('submit', event => {
   event.preventDefault();
+  form.reset();
   if (query === '') {
     event.target.disabled = true;
   }
+  showLoader();
   getImagesByQuery(query);
-  form.reset();
 });
 
 // try {

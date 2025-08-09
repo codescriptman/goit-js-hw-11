@@ -3,8 +3,22 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { form } from '../main';
 
-export function showLoader() {}
-function clearGallery() {}
+export function showLoader() {
+  form.insertAdjacentHTML('afterend', '<div class="loader"></div>');
+  return document.querySelector('.loader');
+}
+export function hideLoader() {
+  const loader = document.querySelector('.loader');
+  return loader.remove();
+}
+export function clearGallery() {
+  try {
+    const gallery = document.querySelector('.gallery');
+    gallery.remove();
+  } catch (error) {
+    return;
+  }
+}
 export function createGallery(images) {
   form.insertAdjacentHTML('afterend', '<ul class="gallery"></ul>');
   const gallery = document.querySelector('.gallery');
@@ -50,4 +64,3 @@ export function createGallery(images) {
   galleryUse.refresh();
   galleryUse.on('show.simplelightbox', () => {});
 }
-export function hideLoader() {}

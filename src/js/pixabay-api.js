@@ -5,6 +5,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 import { showLoader } from './render-functions';
 import { hideLoader } from './render-functions';
 import { createGallery } from './render-functions';
+import { clearGallery } from './render-functions';
 
 import { form } from '../main';
 
@@ -23,12 +24,7 @@ export function getImagesByQuery(query) {
     })
     .then(res => {
       if (res.data.hits.length === 0) {
-        try {
-          const gallery = document.querySelector('.gallery');
-          gallery.remove();
-        } catch (error) {
-          return;
-        }
+        clearGallery();
         throw new Error();
       }
       createGallery(res.data.hits);
@@ -40,5 +36,6 @@ export function getImagesByQuery(query) {
         message: `Sorry, there are no images matching your search query. Please try again!
 `,
       });
-    });
+    })
+    .finally(() => hideLoader());
 }

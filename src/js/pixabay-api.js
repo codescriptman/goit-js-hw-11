@@ -6,6 +6,8 @@ import { showLoader } from './render-functions';
 import { hideLoader } from './render-functions';
 import { createGallery } from './render-functions';
 
+import { form } from '../main';
+
 const apiKey = '51663153-45016a947364047e6aa27bf79';
 
 export function getImagesByQuery(query) {
@@ -21,19 +23,17 @@ export function getImagesByQuery(query) {
     })
     .then(res => {
       if (res.data.hits.length === 0) {
-        hideLoader();
+        try {
+          const gallery = document.querySelector('.gallery');
+          gallery.remove();
+        } catch (error) {
+          return;
+        }
         throw new Error();
       }
-      showLoader(res.data.hits);
+      createGallery(res.data.hits);
       return res.data.hits;
     })
-    .then(() => {
-      document.querySelector('.gallery').addEventListener('click', event => {
-        event.preventDefault();
-        createGallery();
-      });
-    })
-    //? .then(hideLoader())
     .catch(error => {
       iziToast.error({
         position: 'topRight',

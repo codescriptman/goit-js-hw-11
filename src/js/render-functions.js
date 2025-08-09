@@ -3,16 +3,9 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { form } from '../main';
 
-export function createGallery() {
-  const galleryUse = new SimpleLightbox('.gallery .gallery-link', {
-    captionsData: 'alt',
-    captionPosition: 'bottom',
-    captionDelay: 250,
-  });
-  galleryUse.on('show.simplelightbox', () => galleryUse.refresh());
-}
+export function showLoader() {}
 function clearGallery() {}
-export function showLoader(images) {
+export function createGallery(images) {
   form.insertAdjacentHTML('afterend', '<ul class="gallery"></ul>');
   const gallery = document.querySelector('.gallery');
   const markup = images
@@ -49,12 +42,12 @@ export function showLoader(images) {
     )
     .join('');
   gallery.insertAdjacentHTML('afterbegin', markup);
+  const galleryUse = new SimpleLightbox('.gallery .gallery-link', {
+    captionsData: 'alt',
+    captionPosition: 'bottom',
+    captionDelay: 250,
+  });
+  galleryUse.refresh();
+  galleryUse.on('show.simplelightbox', () => {});
 }
-export function hideLoader() {
-  try {
-    const gallery = document.querySelector('.gallery');
-    gallery.remove();
-  } catch (error) {
-    return;
-  }
-}
+export function hideLoader() {}

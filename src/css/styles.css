@@ -60,6 +60,10 @@
 .form > button:hover {
   background: #6c8cff;
 }
+.form > button:disabled {
+  cursor: auto;
+  background: gray;
+}
 .gallery {
   display: flex;
   flex-wrap: wrap;

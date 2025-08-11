@@ -16,6 +16,7 @@ form.addEventListener('submit', event => {
   event.preventDefault();
   let query = String(input.value).trim();
   if (query === '') {
+    form.reset();
     iziToast.error({
       position: 'topRight',
       message: `Fill empty fields`,

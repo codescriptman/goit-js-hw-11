@@ -27,7 +27,9 @@ export function clearGallery() {
 }
 export function createGallery(images) {
   if (!document.querySelector('.gallery')) {
-    return form.insertAdjacentHTML('afterend', '<ul class="gallery"></ul>');
+    form.insertAdjacentHTML('afterend', '<ul class="gallery"></ul>');
+    const gallery = document.querySelector('.gallery');
+    return gallery;
   }
   const gallery = document.querySelector('.gallery');
   const markup = images

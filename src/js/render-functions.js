@@ -29,7 +29,6 @@ export function createGallery(images) {
   if (!document.querySelector('.gallery')) {
     form.insertAdjacentHTML('afterend', '<ul class="gallery"></ul>');
     const gallery = document.querySelector('.gallery');
-    return gallery;
   }
   const gallery = document.querySelector('.gallery');
   const markup = images

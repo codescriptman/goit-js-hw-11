@@ -3,24 +3,32 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { form } from '../main';
 
+const galleryUse = new SimpleLightbox('.gallery .gallery-link', {
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
+
 export function showLoader() {
   form.insertAdjacentHTML('afterend', '<div class="loader"></div>');
   return document.querySelector('.loader');
 }
 export function hideLoader() {
-  const loader = document.querySelector('.loader');
-  return loader.remove();
+  if (document.querySelector('.loader')) {
+    document.querySelector('.loader').remove();
+  }
+  return;
 }
 export function clearGallery() {
-  try {
-    const gallery = document.querySelector('.gallery');
-    gallery.remove();
-  } catch (error) {
-    return;
+  if (document.querySelector('.gallery')) {
+    document.querySelector('.gallery').remove();
   }
+  return;
 }
 export function createGallery(images) {
-  form.insertAdjacentHTML('afterend', '<ul class="gallery"></ul>');
+  if (!document.querySelector('.gallery')) {
+    return form.insertAdjacentHTML('afterend', '<ul class="gallery"></ul>');
+  }
   const gallery = document.querySelector('.gallery');
   const markup = images
     .map(
@@ -56,11 +64,6 @@ export function createGallery(images) {
     )
     .join('');
   gallery.insertAdjacentHTML('afterbegin', markup);
-  const galleryUse = new SimpleLightbox('.gallery .gallery-link', {
-    captionsData: 'alt',
-    captionPosition: 'bottom',
-    captionDelay: 250,
-  });
   galleryUse.refresh();
   galleryUse.on('show.simplelightbox', () => {});
 }
